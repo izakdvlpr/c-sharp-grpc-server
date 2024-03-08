@@ -21,7 +21,7 @@ async function main() {
 		credentials.createInsecure(),
 	);
 
-	client.sayHello({ name: "Hello World" }, (err, response) => {
+	client.sayHello({ name: "Izak" }, (err, response) => {
 		if (err) {
 			console.error(err);
 
@@ -29,6 +29,36 @@ async function main() {
 		}
 
 		console.log(response.message);
+	});
+
+	client.getUsers({}, (err, response) => {
+		if (err) {
+			console.error(err);
+
+			return;
+		}
+
+		console.log(response.users);
+	});
+
+	client.getUserById({ userId: "1" }, (err, response) => {
+		if (err) {
+			console.error(err);
+
+			return;
+		}
+
+		console.log(response.user);
+	});
+
+	client.getUserById({ userId: "100" }, (err, response) => {
+		if (err) {
+			console.error(err.message);
+
+			return;
+		}
+
+		console.log(response.user);
 	});
 }
 
